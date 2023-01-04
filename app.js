@@ -46,10 +46,10 @@ let playRound = function(playerSelection, computerSelection) {
             };
             break;
         case 'scissors':
-            if(computerSelection === 'paper') {
-                return 'win';
-            } else if (computerSelection === 'scissors') {
+            if(computerSelection === 'rock') {
                 return 'loss';
+            } else if (computerSelection === 'paper') {
+                return 'win';
             };
             break;
         default:
@@ -59,10 +59,43 @@ let playRound = function(playerSelection, computerSelection) {
 }
 
 const container = document.querySelector('#container');
+let playerScore = 0;
+let computerScore = 0;
 
 for (let i = 0; i < 3; i++) {
     let newButton = document.createElement('button');
     newButton.style = 'background-color: blue;width:200px; height:70px; color:white; font-size: 20px;';
-    newButton.innerText = `Button${i+1}`;
+
+    let buttonText = '';
+    if (i === 0) {
+        buttonText = 'Rock';
+    } else if (i === 1) {
+        buttonText = 'Paper';
+    } else {
+        buttonText = 'Scissors';
+    };
+    newButton.innerText = buttonText;
+
+    newButton.addEventListener('click', function(e) {
+        let choice = e.target.innerText.toLowerCase();
+        let roundResults = playRound(choice, getComputerChoice());
+        if (roundResults === 'win') {
+            playerScore++;
+        } else if (roundResults === 'loss') {
+            computerScore++;
+        };
+        console.log('Player', playerScore, '\nComputer', computerScore);
+
+        if (playerScore >= 5) {
+            console.log('You are the Champion!');
+            playerScore = 0
+            computerScore = 0
+        } else if (computerScore >= 5) {
+            console.log('Mr Computer wins!');
+            playerScore = 0
+            computerScore = 0
+        };
+    });
+
     container.appendChild(newButton);
 }

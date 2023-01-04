@@ -13,7 +13,7 @@ let getComputerChoice = () => {
             break;
     };
 
-    console.log(result);
+    return result;
 };
 
 let playerChoice = () => {
@@ -22,8 +22,40 @@ let playerChoice = () => {
     while (input !== 'rock' && input !== 'paper' && input !== 'scissors') {
         input = prompt('Choose between "rock", "paper" and "scissors"!').toLowerCase();
     };
+
+    return input;
 };
 
-getComputerChoice();
+let playRound = function(playerSelection, computerSelection) {
 
-// let playRound = function(playerSelection, computerSelection) {}
+    if (playerSelection === computerSelection) return 'draw';
+
+    switch (playerSelection) {
+        case 'rock':
+            if(computerSelection === 'paper') {
+                return 'loss';
+            } else if (computerSelection === 'scissors') {
+                return 'win';
+            };
+            break;
+        case 'paper':
+            if(computerSelection === 'rock') {
+                return 'win';
+            } else if (computerSelection === 'scissors') {
+                return 'loss';
+            };
+            break;
+        case 'scissors':
+            if(computerSelection === 'paper') {
+                return 'win';
+            } else if (computerSelection === 'scissors') {
+                return 'loss';
+            };
+            break;
+        default:
+            alert('something went wrong')
+            return 'draw';
+    };
+}
+
+

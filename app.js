@@ -58,6 +58,11 @@ let playRound = function(playerSelection, computerSelection) {
     };
 }
 
+const container = document.querySelector('#container');
 
-
-console.log(game())
+for (let i = 0; i < 3; i++) {
+    let newButton = document.createElement('button');
+    newButton.style = 'background-color: blue;width:200px; height:70px; color:white; font-size: 20px;';
+    newButton.innerText = `Button${i+1}`;
+    container.appendChild(newButton);
+}

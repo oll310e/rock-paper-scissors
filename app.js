@@ -3,17 +3,27 @@ let getComputerChoice = () => {
 
     switch (randomInt) {
         case 1:
-            result = 'Rock';
+            result = 'rock';
             break;
         case 2:
-            result = 'Paper';
+            result = 'paper';
             break;
         case 3:
-            result = 'Scissors';
+            result = 'scissors';
             break;
     };
-    
+
     console.log(result);
 };
 
-getComputerChoice()
+let playerChoice = () => {
+    let input = prompt('Choose your move!').toLowerCase();
+
+    while (input !== 'rock' && input !== 'paper' && input !== 'scissors') {
+        input = prompt('Choose between "rock", "paper" and "scissors"!').toLowerCase();
+    };
+};
+
+getComputerChoice();
+
+// let playRound = function(playerSelection, computerSelection) {}

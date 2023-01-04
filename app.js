@@ -58,26 +58,6 @@ let playRound = function(playerSelection, computerSelection) {
     };
 }
 
-let game = () => {
-    let player = 0;
-    let computer = 0;
 
-    for(let i = 0; i < 5; i++) {
-        let roundResult = playRound(playerChoice(), getComputerChoice());
-        if(roundResult === 'win') {
-            player++
-        } else if (roundResult === 'loss') {
-            computer++
-        }
-    }
-    if (player === computer) {
-        return 'its a draw game!';
-    } else if(player > computer) {
-        return 'You are the champion!'
-    } else {
-        return 'Computer wins!'
-    }
-
-};
 
 console.log(game())
